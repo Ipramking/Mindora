@@ -51,12 +51,12 @@ export function LessonView({
       <button
         type="button"
         onClick={handleGenerate}
-        disabled={pending || lesson?.status === "processing"}
+        disabled={pending}
         className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-500 disabled:opacity-60"
       >
-        {pending || lesson?.status === "processing"
+        {pending
           ? "Generating..."
-          : lesson
+          : lesson?.status === "ready"
             ? "Regenerate lesson"
             : "Generate lesson"}
       </button>
@@ -70,10 +70,11 @@ export function LessonView({
         <section className="rounded-2xl border border-zinc-200 bg-white p-6 text-sm whitespace-pre-wrap text-zinc-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300">
           {lesson.content}
         </section>
-      ) : lesson?.status === "processing" ? (
+      ) : lesson?.status === "processing" && !pending ? (
         <div className="rounded-2xl border border-dashed border-zinc-300 p-8 text-center dark:border-zinc-700">
           <p className="text-zinc-500 dark:text-zinc-400">
-            Your lesson is being written — this can take a minute. Refresh to check progress.
+            A previous lesson generation may still be running, or it didn&apos;t finish. Click
+            &quot;Generate lesson&quot; to start a fresh one.
           </p>
         </div>
       ) : (
