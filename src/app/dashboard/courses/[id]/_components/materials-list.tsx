@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Material } from "@/lib/supabase/types";
+import type { Lesson, Material } from "@/lib/supabase/types";
 
 const STATUS_STYLES: Record<Material["status"], string> = {
   processing: "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300",
@@ -13,7 +13,24 @@ const STATUS_LABELS: Record<Material["status"], string> = {
   error: "Error",
 };
 
-export function MaterialsList({ materials }: { materials: Material[] }) {
+const LESSON_STATUS_STYLES: Record<Lesson["status"], string> = {
+  processing: "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300",
+  ready: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300",
+  error: "bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300",
+};
+
+const LESSON_STATUS_LABELS: Record<Lesson["status"], string> = {
+  processing: "Lesson generating...",
+  ready: "Lesson ready",
+  error: "Lesson failed",
+};
+
+export type MaterialWithExtras = Material & {
+  lesson: Pick<Lesson, "status"> | null;
+  quizId: string | null;
+};
+
+export function MaterialsList({ materials }: { materials: MaterialWithExtras[] }) {
   if (materials.length === 0) {
     return (
       <div className="rounded-2xl border border-dashed border-zinc-300 p-8 text-center dark:border-zinc-700">
@@ -37,12 +54,35 @@ export function MaterialsList({ materials }: { materials: Material[] }) {
           </div>
           <div className="flex shrink-0 items-center gap-3">
             {material.status === "ready" && (
-              <Link
-                href={`/dashboard/courses/${material.course_id}/materials/${material.id}/summary`}
-                className="text-sm text-indigo-600 hover:underline dark:text-indigo-400"
+              <>
+                <Link
+                  href={`/dashboard/courses/${material.course_id}/materials/${material.id}/lesson`}
+                  className="text-sm text-indigo-600 hover:underline dark:text-indigo-400"
+                >
+                  Lesson
+                </Link>
+                <Link
+                  href={`/dashboard/courses/${material.course_id}/materials/${material.id}/summary`}
+                  className="text-sm text-indigo-600 hover:underline dark:text-indigo-400"
+                >
+                  Summary
+                </Link>
+                {material.quizId && (
+                  <Link
+                    href={`/dashboard/courses/${material.course_id}/quizzes/${material.quizId}`}
+                    className="text-sm text-indigo-600 hover:underline dark:text-indigo-400"
+                  >
+                    Quiz
+                  </Link>
+                )}
+              </>
+            )}
+            {material.lesson && (
+              <span
+                className={`rounded-full px-3 py-1 text-xs font-medium ${LESSON_STATUS_STYLES[material.lesson.status]}`}
               >
-                Summary
-              </Link>
+                {LESSON_STATUS_LABELS[material.lesson.status]}
+              </span>
             )}
             <span
               className={`rounded-full px-3 py-1 text-xs font-medium ${STATUS_STYLES[material.status]}`}

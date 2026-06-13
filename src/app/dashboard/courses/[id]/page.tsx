@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import type { Course, Material } from "@/lib/supabase/types";
+import type { Course, Lesson, Material, Quiz } from "@/lib/supabase/types";
 import { UploadMaterialForm } from "@/app/dashboard/courses/[id]/_components/upload-material-form";
 import { MaterialsList } from "@/app/dashboard/courses/[id]/_components/materials-list";
 import { ExamDateForm } from "@/app/dashboard/courses/[id]/_components/exam-date-form";
@@ -30,6 +30,42 @@ export default async function CoursePage({
     .eq("course_id", id)
     .order("uploaded_at", { ascending: false })
     .returns<Material[]>();
+
+  const materialIds = (materials ?? []).map((m) => m.id);
+
+  const [{ data: lessons }, { data: quizzes }] = await Promise.all([
+    materialIds.length > 0
+      ? supabase
+          .from("lessons")
+          .select("material_id, status")
+          .in("material_id", materialIds)
+          .returns<Pick<Lesson, "material_id" | "status">[]>()
+      : Promise.resolve({ data: [] as Pick<Lesson, "material_id" | "status">[] }),
+    materialIds.length > 0
+      ? supabase
+          .from("quizzes")
+          .select("id, material_id, created_at")
+          .in("material_id", materialIds)
+          .order("created_at", { ascending: false })
+          .returns<Pick<Quiz, "id" | "material_id" | "created_at">[]>()
+      : Promise.resolve({ data: [] as Pick<Quiz, "id" | "material_id" | "created_at">[] }),
+  ]);
+
+  const lessonByMaterial = new Map((lessons ?? []).map((l) => [l.material_id, l]));
+  const quizByMaterial = new Map<string, string>();
+  for (const quiz of quizzes ?? []) {
+    if (quiz.material_id && !quizByMaterial.has(quiz.material_id)) {
+      quizByMaterial.set(quiz.material_id, quiz.id);
+    }
+  }
+
+  const materialsWithExtras = (materials ?? []).map((material) => ({
+    ...material,
+    lesson: lessonByMaterial.get(material.id)
+      ? { status: lessonByMaterial.get(material.id)!.status }
+      : null,
+    quizId: quizByMaterial.get(material.id) ?? null,
+  }));
 
   return (
     <div className="space-y-6">
@@ -75,7 +111,7 @@ export default async function CoursePage({
 
       <UploadMaterialForm courseId={course.id} />
 
-      <MaterialsList materials={materials ?? []} />
+      <MaterialsList materials={materialsWithExtras} />
     </div>
   );
 }

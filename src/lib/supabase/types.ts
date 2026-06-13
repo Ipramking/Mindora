@@ -132,3 +132,17 @@ export type MaterialSummary = {
   key_terms: GlossaryTerm[];
   created_at: string;
 };
+
+export type LessonStatus = "processing" | "ready" | "error";
+
+export type Lesson = {
+  id: string;
+  material_id: string;
+  course_id: string;
+  user_id: string;
+  title: string;
+  content: string;
+  status: LessonStatus;
+  error_message: string | null;
+  created_at: string;
+};

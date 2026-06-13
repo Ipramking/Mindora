@@ -3,6 +3,8 @@ import { createClient } from "@/lib/supabase/server";
 import { getAnthropicClient } from "@/lib/anthropic";
 import { getGenerationContext } from "@/lib/generation-context";
 
+export const maxDuration = 60;
+
 const QUESTION_COUNTS = new Set([3, 5, 10]);
 
 const QUIZ_TOOL = {

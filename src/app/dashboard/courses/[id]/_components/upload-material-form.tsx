@@ -40,6 +40,21 @@ export function UploadMaterialForm({ courseId }: { courseId: string }) {
         throw new Error(data.error ?? "Upload failed.");
       }
 
+      const data = await res.json().catch(() => ({}));
+      const materialId = data?.id;
+
+      if (typeof materialId === "string") {
+        // Kick off lesson + quiz generation in the background. These run as
+        // separate requests so they aren't bound by the upload request's
+        // timeout, and the user doesn't have to trigger them manually.
+        fetch(`/api/materials/${materialId}/lesson`, { method: "POST" }).catch(() => {});
+        fetch("/api/quizzes/generate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ courseId, materialId, numQuestions: 10 }),
+        }).catch(() => {});
+      }
+
       formRef.current?.reset();
       router.refresh();
     } catch (err) {
