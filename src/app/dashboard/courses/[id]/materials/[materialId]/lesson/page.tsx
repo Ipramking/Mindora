@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import type { Lesson, Material, Quiz } from "@/lib/supabase/types";
 import { LessonView } from "@/app/dashboard/courses/[id]/materials/[materialId]/lesson/_components/lesson-view";
+import { PageHero } from "@/components/page-hero";
 
 export default async function MaterialLessonPage({
   params,
@@ -39,28 +40,23 @@ export default async function MaterialLessonPage({
 
   return (
     <div className="space-y-6">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <Link
-            href={`/dashboard/courses/${id}`}
-            className="text-sm text-indigo-600 hover:underline dark:text-indigo-400"
-          >
-            ← Back to course
-          </Link>
-          <h1 className="mt-1 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
-            {material.title}
-          </h1>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">Lesson</p>
-        </div>
-        {quiz && (
-          <Link
-            href={`/dashboard/courses/${id}/quizzes/${quiz.id}`}
-            className="shrink-0 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-500"
-          >
-            Take the quiz
-          </Link>
-        )}
-      </div>
+      <PageHero
+        seed={id}
+        backHref={`/dashboard/courses/${id}`}
+        backLabel="Back to course"
+        title={material.title}
+        subtitle="Lesson"
+        actions={
+          quiz && (
+            <Link
+              href={`/dashboard/courses/${id}/quizzes/${quiz.id}`}
+              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-500"
+            >
+              Take the quiz
+            </Link>
+          )
+        }
+      />
 
       <LessonView
         materialId={material.id}

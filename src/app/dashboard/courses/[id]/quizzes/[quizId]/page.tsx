@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import type { Course, Quiz, QuizQuestion } from "@/lib/supabase/types";
 import { QuizRunner } from "@/app/dashboard/courses/[id]/quizzes/[quizId]/_components/quiz-runner";
+import { PageHero } from "@/components/page-hero";
 
 export default async function QuizPage({
   params,
@@ -41,17 +41,12 @@ export default async function QuizPage({
 
   return (
     <div className="space-y-6">
-      <div>
-        <Link
-          href={`/dashboard/courses/${course.id}/quizzes`}
-          className="text-sm text-indigo-600 hover:underline dark:text-indigo-400"
-        >
-          ← Back to quizzes
-        </Link>
-        <h1 className="mt-1 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
-          {quiz.title}
-        </h1>
-      </div>
+      <PageHero
+        seed={course.id}
+        backHref={`/dashboard/courses/${course.id}/quizzes`}
+        backLabel="Back to quizzes"
+        title={quiz.title}
+      />
 
       <QuizRunner quizId={quiz.id} questions={questions ?? []} />
     </div>

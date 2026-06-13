@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import type { Course, Flashcard, FlashcardReview } from "@/lib/supabase/types";
 import { ReviewSession } from "@/app/dashboard/courses/[id]/flashcards/review/_components/review-session";
+import { PageHero } from "@/components/page-hero";
 
 export default async function FlashcardsReviewPage({
   params,
@@ -43,17 +43,12 @@ export default async function FlashcardsReviewPage({
 
   return (
     <div className="space-y-6">
-      <div>
-        <Link
-          href={`/dashboard/courses/${course.id}/flashcards`}
-          className="text-sm text-indigo-600 hover:underline dark:text-indigo-400"
-        >
-          ← Back to flashcards
-        </Link>
-        <h1 className="mt-1 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
-          Flashcard review
-        </h1>
-      </div>
+      <PageHero
+        seed={course.id}
+        backHref={`/dashboard/courses/${course.id}/flashcards`}
+        backLabel="Back to flashcards"
+        title="Flashcard review"
+      />
 
       <ReviewSession courseId={course.id} cards={cards} />
     </div>

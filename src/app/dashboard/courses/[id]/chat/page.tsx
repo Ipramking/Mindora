@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import type { ChatMessage, ChatSession, Course } from "@/lib/supabase/types";
 import { ChatPanel } from "@/app/dashboard/courses/[id]/chat/_components/chat-panel";
+import { PageHero } from "@/components/page-hero";
 
 export default async function CourseChatPage({
   params,
@@ -43,17 +43,12 @@ export default async function CourseChatPage({
 
   return (
     <div className="flex h-[calc(100vh-12rem)] flex-col gap-4">
-      <div>
-        <Link
-          href={`/dashboard/courses/${course.id}`}
-          className="text-sm text-indigo-600 hover:underline dark:text-indigo-400"
-        >
-          ← Back to {course.title}
-        </Link>
-        <h1 className="mt-1 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
-          Tutor chat
-        </h1>
-      </div>
+      <PageHero
+        seed={course.id}
+        backHref={`/dashboard/courses/${course.id}`}
+        backLabel={`Back to ${course.title}`}
+        title="Tutor chat"
+      />
 
       <ChatPanel
         courseId={course.id}

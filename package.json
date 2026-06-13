@@ -13,6 +13,7 @@
     "@supabase/ssr": "^0.12.0",
     "@supabase/supabase-js": "^2.108.1",
     "dommatrix": "^0.1.1",
+    "lucide-react": "^1.18.0",
     "mammoth": "^1.12.0",
     "next": "16.2.9",
     "pdf-parse": "^2.4.5",

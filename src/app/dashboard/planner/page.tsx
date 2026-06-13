@@ -139,12 +139,14 @@ export default async function PlannerPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">Study planner</h1>
-        <p className="mt-1 text-zinc-500 dark:text-zinc-400">
-          Your suggested study tasks across all courses, based on due flashcards, recent quiz
-          results, and upcoming exams.
-        </p>
+      <div className="hero-glow rounded-3xl border border-zinc-200 p-8 dark:border-zinc-800">
+        <div className="relative z-10">
+          <h1 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">Study planner</h1>
+          <p className="mt-1 text-zinc-600 dark:text-zinc-400">
+            Your suggested study tasks across all courses, based on due flashcards, recent quiz
+            results, and upcoming exams.
+          </p>
+        </div>
       </div>
 
       {tasks.length > 0 ? (

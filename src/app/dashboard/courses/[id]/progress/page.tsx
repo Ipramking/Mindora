@@ -10,6 +10,7 @@ import type {
   QuizAttempt,
   QuizQuestion,
 } from "@/lib/supabase/types";
+import { PageHero } from "@/components/page-hero";
 
 const MASTERED_INTERVAL_DAYS = 21;
 
@@ -136,15 +137,12 @@ export default async function CourseProgressPage({
 
   return (
     <div className="space-y-6">
-      <div>
-        <Link
-          href={`/dashboard/courses/${course.id}`}
-          className="text-sm text-indigo-600 hover:underline dark:text-indigo-400"
-        >
-          ← Back to {course.title}
-        </Link>
-        <h1 className="mt-1 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">Progress</h1>
-      </div>
+      <PageHero
+        seed={course.id}
+        backHref={`/dashboard/courses/${course.id}`}
+        backLabel={`Back to ${course.title}`}
+        title="Progress"
+      />
 
       <div className="grid gap-4 sm:grid-cols-3">
         <StatCard

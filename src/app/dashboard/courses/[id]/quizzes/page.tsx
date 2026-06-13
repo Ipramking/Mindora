@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import type { Course, Material, Quiz } from "@/lib/supabase/types";
 import { GenerateQuizForm } from "@/app/dashboard/courses/[id]/quizzes/_components/generate-quiz-form";
+import { PageHero } from "@/components/page-hero";
 
 export default async function CourseQuizzesPage({
   params,
@@ -39,15 +40,12 @@ export default async function CourseQuizzesPage({
 
   return (
     <div className="space-y-6">
-      <div>
-        <Link
-          href={`/dashboard/courses/${course.id}`}
-          className="text-sm text-indigo-600 hover:underline dark:text-indigo-400"
-        >
-          ← Back to {course.title}
-        </Link>
-        <h1 className="mt-1 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">Quizzes</h1>
-      </div>
+      <PageHero
+        seed={course.id}
+        backHref={`/dashboard/courses/${course.id}`}
+        backLabel={`Back to ${course.title}`}
+        title="Quizzes"
+      />
 
       <GenerateQuizForm courseId={course.id} materials={materials ?? []} />
 
