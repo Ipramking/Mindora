@@ -41,12 +41,11 @@ function NavLinks({ pathname, onNavigate }: { pathname: string; onNavigate?: () 
 function SidebarContent({ email, pathname, onNavigate }: { email: string; pathname: string; onNavigate?: () => void }) {
   return (
     <div className="flex h-full flex-col">
-      <Link
-        href="/dashboard"
-        onClick={onNavigate}
-        className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-lg font-semibold text-transparent"
-      >
-        Mindora
+      <Link href="/dashboard" onClick={onNavigate} className="flex items-center gap-2">
+        <img src="/logo.svg" alt="" className="h-7 w-7 rounded-lg" />
+        <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-lg font-semibold text-transparent">
+          Mindora
+        </span>
       </Link>
 
       <div className="mt-6 flex-1">
@@ -77,11 +76,11 @@ export function Sidebar({ email }: { email: string }) {
     <>
       {/* Mobile top bar */}
       <div className="sticky top-0 z-30 flex items-center justify-between border-b border-zinc-200 bg-white/80 px-4 py-3 backdrop-blur-md md:hidden dark:border-zinc-800 dark:bg-zinc-950/80">
-        <Link
-          href="/dashboard"
-          className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-lg font-semibold text-transparent"
-        >
-          Mindora
+        <Link href="/dashboard" className="flex items-center gap-2">
+          <img src="/logo.svg" alt="" className="h-7 w-7 rounded-lg" />
+          <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-lg font-semibold text-transparent">
+            Mindora
+          </span>
         </Link>
         <button
           type="button"
@@ -99,8 +98,11 @@ export function Sidebar({ email }: { email: string }) {
           <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
           <div className="absolute top-0 left-0 h-full w-64 border-r border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950">
             <div className="mb-4 flex items-center justify-between">
-              <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-lg font-semibold text-transparent">
-                Mindora
+              <span className="flex items-center gap-2">
+                <img src="/logo.svg" alt="" className="h-7 w-7 rounded-lg" />
+                <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-lg font-semibold text-transparent">
+                  Mindora
+                </span>
               </span>
               <button
                 type="button"

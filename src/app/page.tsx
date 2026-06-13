@@ -4,8 +4,11 @@ export default function Home() {
   return (
     <div className="flex flex-1 flex-col bg-zinc-50 dark:bg-black">
       <header className="mx-auto flex w-full max-w-5xl items-center justify-between px-4 py-6">
-        <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-lg font-semibold text-transparent">
-          Mindora
+        <span className="flex items-center gap-2">
+          <img src="/logo.svg" alt="" className="h-8 w-8 rounded-lg" />
+          <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-lg font-semibold text-transparent">
+            Mindora
+          </span>
         </span>
         <nav className="flex items-center gap-3 text-sm font-medium sm:gap-4">
           <Link

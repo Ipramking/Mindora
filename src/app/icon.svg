@@ -1,0 +1,15 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mindora-gradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="url(#mindora-gradient)"/>
+  <path
+    d="M64 178V78h22l34 58 34-58h22v100h-20v-70l-28 48h-16l-28-48v70z"
+    fill="white"
+  />
+  <circle cx="194" cy="62" r="13" fill="white" opacity="0.9"/>
+</svg>
