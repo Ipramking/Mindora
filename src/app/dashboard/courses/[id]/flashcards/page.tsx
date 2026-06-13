@@ -65,8 +65,8 @@ export default async function CourseFlashcardsPage({
 
       <GenerateFlashcardsForm courseId={course.id} materials={materials ?? []} />
 
-      <div className="flex items-center justify-between gap-4 rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
-        <div>
+      <div className="flex flex-col gap-3 rounded-2xl border border-zinc-200 bg-white p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:p-5 dark:border-zinc-800 dark:bg-zinc-900">
+        <div className="min-w-0">
           <p className="font-medium text-zinc-900 dark:text-zinc-50">
             {totalCount ?? 0} card{(totalCount ?? 0) === 1 ? "" : "s"} in this deck
           </p>
@@ -77,7 +77,7 @@ export default async function CourseFlashcardsPage({
         <Link
           href={`/dashboard/courses/${course.id}/flashcards/review`}
           aria-disabled={dueCount === 0}
-          className={`shrink-0 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors ${
+          className={`shrink-0 rounded-lg px-4 py-2 text-center text-sm font-medium text-white transition-colors ${
             dueCount === 0
               ? "pointer-events-none bg-zinc-300 dark:bg-zinc-700"
               : "bg-indigo-600 hover:bg-indigo-500"

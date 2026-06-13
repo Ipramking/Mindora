@@ -55,9 +55,9 @@ export default async function CourseQuizzesPage({
             <li key={quiz.id}>
               <Link
                 href={`/dashboard/courses/${course.id}/quizzes/${quiz.id}`}
-                className="flex items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/60"
+                className="flex items-center justify-between gap-4 px-4 py-4 transition-colors hover:bg-zinc-50 sm:px-5 dark:hover:bg-zinc-800/60"
               >
-                <p className="font-medium text-zinc-900 dark:text-zinc-50">{quiz.title}</p>
+                <p className="min-w-0 truncate font-medium text-zinc-900 dark:text-zinc-50">{quiz.title}</p>
                 <p className="shrink-0 text-sm text-zinc-500 dark:text-zinc-400">
                   {new Date(quiz.created_at).toLocaleDateString()}
                 </p>

@@ -12,29 +12,29 @@ export default async function AccountPage() {
     <div className="space-y-6">
       <div className="hero-glow rounded-3xl border border-zinc-200 p-5 sm:p-8 dark:border-zinc-800">
         <div className="relative z-10">
-          <h1 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">Account</h1>
+          <h1 className="text-xl font-semibold text-zinc-900 sm:text-2xl dark:text-zinc-50">Account</h1>
           <p className="mt-1 text-zinc-600 dark:text-zinc-400">
             Your Mindora profile and session details.
           </p>
         </div>
       </div>
 
-      <div className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="rounded-2xl border border-zinc-200 bg-white p-4 sm:p-6 dark:border-zinc-800 dark:bg-zinc-900">
         <dl className="divide-y divide-zinc-200 dark:divide-zinc-800">
           {name && (
-            <div className="flex items-center justify-between gap-4 py-3 first:pt-0">
+            <div className="flex flex-col gap-1 py-3 first:pt-0 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
               <dt className="text-sm text-zinc-500 dark:text-zinc-400">Name</dt>
-              <dd className="text-sm font-medium text-zinc-900 dark:text-zinc-50">{name}</dd>
+              <dd className="text-sm font-medium text-zinc-900 break-words dark:text-zinc-50">{name}</dd>
             </div>
           )}
-          <div className="flex items-center justify-between gap-4 py-3 first:pt-0">
+          <div className="flex flex-col gap-1 py-3 first:pt-0 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <dt className="text-sm text-zinc-500 dark:text-zinc-400">Email</dt>
-            <dd className="text-sm font-medium text-zinc-900 dark:text-zinc-50">{user?.email}</dd>
+            <dd className="text-sm font-medium text-zinc-900 break-words dark:text-zinc-50">{user?.email}</dd>
           </div>
           {joined && (
-            <div className="flex items-center justify-between gap-4 py-3 last:pb-0">
+            <div className="flex flex-col gap-1 py-3 last:pb-0 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
               <dt className="text-sm text-zinc-500 dark:text-zinc-400">Member since</dt>
-              <dd className="text-sm font-medium text-zinc-900 dark:text-zinc-50">{joined}</dd>
+              <dd className="text-sm font-medium text-zinc-900 break-words dark:text-zinc-50">{joined}</dd>
             </div>
           )}
         </dl>
