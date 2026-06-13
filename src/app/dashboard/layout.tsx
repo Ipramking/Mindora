@@ -17,9 +17,12 @@ export default async function DashboardLayout({
 
   return (
     <div className="flex min-h-full flex-1 flex-col">
-      <header className="border-b border-zinc-200 dark:border-zinc-800">
+      <header className="sticky top-0 z-20 border-b border-zinc-200 bg-white/80 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/80">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
-          <Link href="/dashboard" className="text-lg font-semibold text-indigo-600 dark:text-indigo-400">
+          <Link
+            href="/dashboard"
+            className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-lg font-semibold text-transparent"
+          >
             Mindora
           </Link>
           <div className="flex items-center gap-4">
@@ -29,7 +32,7 @@ export default async function DashboardLayout({
             >
               Planner
             </Link>
-            <span className="text-sm text-zinc-500 dark:text-zinc-400">
+            <span className="hidden text-sm text-zinc-500 sm:inline dark:text-zinc-400">
               {data.user.email}
             </span>
             <form action={logout}>

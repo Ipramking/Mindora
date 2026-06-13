@@ -44,7 +44,10 @@ export function MaterialsList({ materials }: { materials: MaterialWithExtras[] }
   return (
     <ul className="divide-y divide-zinc-200 rounded-2xl border border-zinc-200 bg-white dark:divide-zinc-800 dark:border-zinc-800 dark:bg-zinc-900">
       {materials.map((material) => (
-        <li key={material.id} className="flex items-center justify-between gap-4 px-5 py-4">
+        <li
+          key={material.id}
+          className="flex flex-wrap items-center justify-between gap-3 px-5 py-4"
+        >
           <div>
             <p className="font-medium text-zinc-900 dark:text-zinc-50">{material.title}</p>
             <p className="text-sm text-zinc-500 dark:text-zinc-400">
@@ -52,25 +55,25 @@ export function MaterialsList({ materials }: { materials: MaterialWithExtras[] }
               {material.error_message ? ` — ${material.error_message}` : ""}
             </p>
           </div>
-          <div className="flex shrink-0 items-center gap-3">
+          <div className="flex shrink-0 flex-wrap items-center gap-2">
             {material.status === "ready" && (
               <>
                 <Link
                   href={`/dashboard/courses/${material.course_id}/materials/${material.id}/lesson`}
-                  className="text-sm text-indigo-600 hover:underline dark:text-indigo-400"
+                  className="rounded-full border border-indigo-200 px-3 py-1 text-xs font-medium text-indigo-600 transition-colors hover:bg-indigo-50 dark:border-indigo-800 dark:text-indigo-400 dark:hover:bg-indigo-950"
                 >
                   Lesson
                 </Link>
                 <Link
                   href={`/dashboard/courses/${material.course_id}/materials/${material.id}/summary`}
-                  className="text-sm text-indigo-600 hover:underline dark:text-indigo-400"
+                  className="rounded-full border border-indigo-200 px-3 py-1 text-xs font-medium text-indigo-600 transition-colors hover:bg-indigo-50 dark:border-indigo-800 dark:text-indigo-400 dark:hover:bg-indigo-950"
                 >
                   Summary
                 </Link>
                 {material.quizId && (
                   <Link
                     href={`/dashboard/courses/${material.course_id}/quizzes/${material.quizId}`}
-                    className="text-sm text-indigo-600 hover:underline dark:text-indigo-400"
+                    className="rounded-full border border-indigo-200 px-3 py-1 text-xs font-medium text-indigo-600 transition-colors hover:bg-indigo-50 dark:border-indigo-800 dark:text-indigo-400 dark:hover:bg-indigo-950"
                   >
                     Quiz
                   </Link>
