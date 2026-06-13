@@ -36,6 +36,17 @@ export async function extractPages(
 }
 
 async function extractPdfPages(buffer: Buffer): Promise<ExtractedPage[]> {
+  // pdfjs-dist's legacy build still references DOMMatrix (a browser API) when
+  // computing page viewports, even for plain text extraction. Polyfill it on
+  // Node/serverless runtimes where it isn't defined.
+  const globalWithDom = globalThis as typeof globalThis & {
+    DOMMatrix?: unknown;
+  };
+  if (typeof globalWithDom.DOMMatrix === "undefined") {
+    const { default: DOMMatrix } = await import("dommatrix");
+    globalWithDom.DOMMatrix = DOMMatrix;
+  }
+
   const { PDFParse } = await import("pdf-parse");
 
   // Avoid pdfjs-dist's dynamic import of a worker script, which Turbopack
