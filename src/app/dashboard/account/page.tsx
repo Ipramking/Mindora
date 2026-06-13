@@ -10,7 +10,7 @@ export default async function AccountPage() {
 
   return (
     <div className="space-y-6">
-      <div className="hero-glow rounded-3xl border border-zinc-200 p-8 dark:border-zinc-800">
+      <div className="hero-glow rounded-3xl border border-zinc-200 p-5 sm:p-8 dark:border-zinc-800">
         <div className="relative z-10">
           <h1 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">Account</h1>
           <p className="mt-1 text-zinc-600 dark:text-zinc-400">

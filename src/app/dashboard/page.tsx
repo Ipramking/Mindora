@@ -40,9 +40,9 @@ export default async function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <div className="hero-glow rounded-3xl border border-zinc-200 p-8 dark:border-zinc-800">
+      <div className="hero-glow rounded-3xl border border-zinc-200 p-5 sm:p-8 dark:border-zinc-800">
         <div className="relative z-10">
-          <h1 className="text-3xl font-semibold text-zinc-900 dark:text-zinc-50">
+          <h1 className="text-2xl font-semibold text-zinc-900 sm:text-3xl dark:text-zinc-50">
             Welcome{name ? `, ${name}` : ""} 👋
           </h1>
           <p className="mt-2 text-zinc-600 dark:text-zinc-400">
@@ -86,7 +86,7 @@ export default async function DashboardPage() {
           })}
         </div>
       ) : (
-        <div className="rounded-2xl border border-dashed border-zinc-300 p-12 text-center dark:border-zinc-700">
+        <div className="rounded-2xl border border-dashed border-zinc-300 p-6 text-center sm:p-12 dark:border-zinc-700">
           <p className="text-zinc-500 dark:text-zinc-400">
             You don&apos;t have any courses yet.
           </p>

@@ -80,10 +80,10 @@ export function ReviewSession({ courseId, cards }: { courseId: string; cards: Fl
         Card {index + 1} of {cards.length}
       </p>
 
-      <div className="flex min-h-48 flex-col items-center justify-center gap-4 rounded-2xl border border-zinc-200 bg-white p-8 text-center dark:border-zinc-800 dark:bg-zinc-900">
-        <p className="text-lg font-medium text-zinc-900 dark:text-zinc-50">{card.front}</p>
+      <div className="flex min-h-40 flex-col items-center justify-center gap-4 rounded-2xl border border-zinc-200 bg-white p-5 text-center sm:min-h-48 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900">
+        <p className="text-lg font-medium break-words text-zinc-900 dark:text-zinc-50">{card.front}</p>
         {showAnswer && (
-          <p className="border-t border-zinc-200 pt-4 text-zinc-600 dark:border-zinc-700 dark:text-zinc-300">
+          <p className="border-t border-zinc-200 pt-4 break-words text-zinc-600 dark:border-zinc-700 dark:text-zinc-300">
             {card.back}
           </p>
         )}
@@ -100,14 +100,14 @@ export function ReviewSession({ courseId, cards }: { courseId: string; cards: Fl
           Show answer
         </button>
       ) : (
-        <div className="flex gap-2">
+        <div className="grid grid-cols-3 gap-2">
           {GRADE_BUTTONS.map((btn) => (
             <button
               key={btn.quality}
               type="button"
               disabled={pending}
               onClick={() => handleGrade(btn.quality)}
-              className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors disabled:opacity-60 ${btn.className}`}
+              className={`rounded-lg px-3 py-3 text-sm font-medium text-white transition-colors disabled:opacity-60 ${btn.className}`}
             >
               {btn.label}
             </button>

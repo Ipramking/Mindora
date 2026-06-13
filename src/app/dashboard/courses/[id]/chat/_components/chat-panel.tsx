@@ -112,7 +112,7 @@ export function ChatPanel({
           id="tone"
           value={tone}
           onChange={(e) => setTone(e.target.value as ChatTone)}
-          className="rounded-lg border border-zinc-300 bg-white px-2 py-1 text-sm text-zinc-900 focus:border-indigo-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
+          className="rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm text-zinc-900 focus:border-indigo-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
         >
           {TONE_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -122,7 +122,7 @@ export function ChatPanel({
         </select>
       </div>
 
-      <div className="flex-1 space-y-4 overflow-y-auto rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="flex-1 space-y-4 overflow-y-auto rounded-2xl border border-zinc-200 bg-white p-3 sm:p-5 dark:border-zinc-800 dark:bg-zinc-900">
         {messages.length === 0 && (
           <p className="text-sm text-zinc-500 dark:text-zinc-400">
             Ask me anything about this course&apos;s materials — I&apos;ll explain it, cite
@@ -133,7 +133,7 @@ export function ChatPanel({
         {messages.map((message, i) => (
           <div key={i} className={message.role === "user" ? "flex justify-end" : "flex justify-start"}>
             <div
-              className={`max-w-[80%] rounded-2xl px-4 py-2 text-sm whitespace-pre-wrap ${
+              className={`max-w-[92%] sm:max-w-[80%] rounded-2xl px-4 py-2 text-sm whitespace-pre-wrap break-words ${
                 message.role === "user"
                   ? "bg-indigo-600 text-white"
                   : "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-50"

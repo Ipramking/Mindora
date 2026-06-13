@@ -46,9 +46,9 @@ export function MaterialsList({ materials }: { materials: MaterialWithExtras[] }
       {materials.map((material) => (
         <li
           key={material.id}
-          className="flex flex-wrap items-center justify-between gap-3 px-5 py-4"
+          className="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5"
         >
-          <div>
+          <div className="min-w-0">
             <p className="font-medium text-zinc-900 dark:text-zinc-50">{material.title}</p>
             <p className="text-sm text-zinc-500 dark:text-zinc-400">
               {material.file_type.toUpperCase()}

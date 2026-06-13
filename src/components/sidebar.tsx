@@ -86,7 +86,7 @@ export function Sidebar({ email }: { email: string }) {
           type="button"
           onClick={() => setOpen(true)}
           aria-label="Open menu"
-          className="rounded-lg p-2 text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+          className="rounded-lg p-3 text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
         >
           <Menu size={22} />
         </button>
@@ -96,7 +96,7 @@ export function Sidebar({ email }: { email: string }) {
       {open && (
         <div className="fixed inset-0 z-40 md:hidden">
           <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
-          <div className="absolute top-0 left-0 h-full w-64 border-r border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950">
+          <div className="absolute top-0 left-0 h-full w-64 max-w-[85vw] border-r border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950">
             <div className="mb-4 flex items-center justify-between">
               <span className="flex items-center gap-2">
                 <img src="/logo.svg" alt="" className="h-7 w-7 rounded-lg" />
@@ -108,7 +108,7 @@ export function Sidebar({ email }: { email: string }) {
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
-                className="rounded-lg p-2 text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                className="rounded-lg p-3 text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
               >
                 <X size={20} />
               </button>

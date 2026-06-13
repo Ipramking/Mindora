@@ -169,7 +169,7 @@ export default async function CourseProgressPage({
             {recentAttempts.map((attempt) => {
               const pct = Math.round((attempt.score / attempt.total) * 100);
               return (
-                <li key={attempt.id} className="flex items-center gap-4 px-5 py-4">
+                <li key={attempt.id} className="flex items-center gap-3 px-4 py-4 sm:gap-4 sm:px-5">
                   <div className="min-w-0 flex-1">
                     <p className="truncate font-medium text-zinc-900 dark:text-zinc-50">
                       {quizTitleById.get(attempt.quiz_id) ?? "Quiz"}
@@ -179,13 +179,13 @@ export default async function CourseProgressPage({
                       {attempt.score} / {attempt.total}
                     </p>
                   </div>
-                  <div className="h-2 w-32 shrink-0 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800">
+                  <div className="h-2 w-16 shrink-0 overflow-hidden rounded-full bg-zinc-100 sm:w-32 dark:bg-zinc-800">
                     <div
                       className="h-full rounded-full bg-indigo-600"
                       style={{ width: `${pct}%` }}
                     />
                   </div>
-                  <span className="w-12 shrink-0 text-right text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                  <span className="w-10 shrink-0 text-right text-sm font-medium text-zinc-700 sm:w-12 dark:text-zinc-300">
                     {pct}%
                   </span>
                 </li>

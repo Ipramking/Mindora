@@ -139,9 +139,9 @@ export default async function PlannerPage() {
 
   return (
     <div className="space-y-6">
-      <div className="hero-glow rounded-3xl border border-zinc-200 p-8 dark:border-zinc-800">
+      <div className="hero-glow rounded-3xl border border-zinc-200 p-5 sm:p-8 dark:border-zinc-800">
         <div className="relative z-10">
-          <h1 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">Study planner</h1>
+          <h1 className="text-xl font-semibold text-zinc-900 sm:text-2xl dark:text-zinc-50">Study planner</h1>
           <p className="mt-1 text-zinc-600 dark:text-zinc-400">
             Your suggested study tasks across all courses, based on due flashcards, recent quiz
             results, and upcoming exams.
@@ -155,13 +155,13 @@ export default async function PlannerPage() {
             <li key={i}>
               <Link
                 href={task.href}
-                className="flex items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800"
+                className="flex flex-col gap-2 px-4 py-4 transition-colors hover:bg-zinc-50 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-5 dark:hover:bg-zinc-800"
               >
-                <div>
+                <div className="min-w-0">
                   <p className="font-medium text-zinc-900 dark:text-zinc-50">{task.label}</p>
                   <p className="text-sm text-zinc-500 dark:text-zinc-400">{task.detail}</p>
                 </div>
-                <span className="shrink-0 rounded-full bg-indigo-100 px-3 py-1 text-xs font-medium text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300">
+                <span className="inline-block w-fit shrink-0 rounded-full bg-indigo-100 px-3 py-1 text-xs font-medium text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300">
                   {task.courseTitle}
                 </span>
               </Link>

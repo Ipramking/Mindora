@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -16,6 +16,18 @@ export const metadata: Metadata = {
   title: "Mindora — Your Friendly AI Study Partner",
   description:
     "Upload your course materials and let Mindora teach, tutor, and quiz you on them.",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Mindora",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#6366f1",
 };
 
 export default function RootLayout({

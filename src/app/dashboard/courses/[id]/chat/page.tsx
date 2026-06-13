@@ -42,7 +42,7 @@ export default async function CourseChatPage({
   }
 
   return (
-    <div className="flex h-[calc(100vh-12rem)] flex-col gap-4">
+    <div className="flex h-[calc(100vh-14rem)] min-h-[24rem] flex-col gap-4 sm:h-[calc(100vh-12rem)]">
       <PageHero
         seed={course.id}
         backHref={`/dashboard/courses/${course.id}`}

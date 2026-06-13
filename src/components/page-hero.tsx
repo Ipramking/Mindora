@@ -19,9 +19,9 @@ export function PageHero({
   const gradient = gradientFor(seed);
 
   return (
-    <div className="hero-glow rounded-3xl border border-zinc-200 p-6 dark:border-zinc-800">
-      <div className="relative z-10 flex flex-wrap items-start justify-between gap-4">
-        <div>
+    <div className="hero-glow rounded-3xl border border-zinc-200 p-4 sm:p-6 dark:border-zinc-800">
+      <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div className="min-w-0">
           <span
             className={`inline-block h-1.5 w-10 rounded-full bg-gradient-to-r ${gradient}`}
           />
@@ -31,10 +31,16 @@ export function PageHero({
           >
             ← {backLabel}
           </Link>
-          <h1 className="mt-1 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">{title}</h1>
+          <h1 className="mt-1 text-xl font-semibold text-zinc-900 sm:text-2xl dark:text-zinc-50">
+            {title}
+          </h1>
           {subtitle && <p className="mt-1 text-zinc-600 dark:text-zinc-400">{subtitle}</p>}
         </div>
-        {actions && <div className="flex shrink-0 flex-wrap gap-2">{actions}</div>}
+        {actions && (
+          <div className="flex flex-col gap-2 sm:flex-shrink-0 sm:flex-row sm:flex-wrap">
+            {actions}
+          </div>
+        )}
       </div>
     </div>
   );

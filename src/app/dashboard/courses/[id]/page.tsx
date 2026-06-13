@@ -72,15 +72,15 @@ export default async function CoursePage({
 
   return (
     <div className="space-y-6">
-      <div className="hero-glow overflow-hidden rounded-3xl border border-zinc-200 p-6 dark:border-zinc-800">
-        <div className="relative z-10 flex flex-wrap items-start justify-between gap-4">
-          <div>
+      <div className="hero-glow overflow-hidden rounded-3xl border border-zinc-200 p-4 sm:p-6 dark:border-zinc-800">
+        <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div className="min-w-0">
             <span
               className={`inline-block rounded-full bg-gradient-to-r ${gradient} px-3 py-1 text-xs font-medium text-white shadow-sm`}
             >
               Course
             </span>
-            <h1 className="mt-2 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+            <h1 className="mt-2 text-xl font-semibold text-zinc-900 sm:text-2xl dark:text-zinc-50">
               {course.title}
             </h1>
             {course.description && (
@@ -90,28 +90,28 @@ export default async function CoursePage({
               <ExamDateForm courseId={course.id} examDate={course.exam_date} />
             </div>
           </div>
-          <div className="flex shrink-0 flex-wrap gap-2">
+          <div className="grid grid-cols-2 gap-2 sm:flex sm:shrink-0 sm:flex-wrap">
             <Link
               href={`/dashboard/courses/${course.id}/progress`}
-              className="rounded-lg border border-zinc-300 bg-white/70 px-4 py-2 text-sm font-medium text-zinc-700 backdrop-blur transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900/70 dark:text-zinc-200 dark:hover:bg-zinc-800"
+              className="rounded-lg border border-zinc-300 bg-white/70 px-4 py-2 text-center text-sm font-medium text-zinc-700 backdrop-blur transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900/70 dark:text-zinc-200 dark:hover:bg-zinc-800"
             >
               Progress
             </Link>
             <Link
               href={`/dashboard/courses/${course.id}/flashcards`}
-              className="rounded-lg border border-zinc-300 bg-white/70 px-4 py-2 text-sm font-medium text-zinc-700 backdrop-blur transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900/70 dark:text-zinc-200 dark:hover:bg-zinc-800"
+              className="rounded-lg border border-zinc-300 bg-white/70 px-4 py-2 text-center text-sm font-medium text-zinc-700 backdrop-blur transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900/70 dark:text-zinc-200 dark:hover:bg-zinc-800"
             >
               Flashcards
             </Link>
             <Link
               href={`/dashboard/courses/${course.id}/quizzes`}
-              className="rounded-lg border border-zinc-300 bg-white/70 px-4 py-2 text-sm font-medium text-zinc-700 backdrop-blur transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900/70 dark:text-zinc-200 dark:hover:bg-zinc-800"
+              className="rounded-lg border border-zinc-300 bg-white/70 px-4 py-2 text-center text-sm font-medium text-zinc-700 backdrop-blur transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900/70 dark:text-zinc-200 dark:hover:bg-zinc-800"
             >
               Quizzes
             </Link>
             <Link
               href={`/dashboard/courses/${course.id}/chat`}
-              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-500"
+              className="rounded-lg bg-indigo-600 px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-indigo-500"
             >
               Open Tutor Chat
             </Link>
